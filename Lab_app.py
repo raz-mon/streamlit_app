@@ -25,7 +25,7 @@ st.write("""
 ## Here we will try to make your life **easier** with a nice application, that will do the ***hard work*** for you.
 This is a little change I'm inserting to the file.
 And another one
-Now I change the file in git, and PULL.
+Now I change the file in git, and used PULL.
 """)
 
 
