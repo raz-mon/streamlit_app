@@ -203,6 +203,7 @@ for i in range(len(a_0_array)):
                 text = text + "$\dfrac{{\chi}^2}{N_{dof}} = %0.4f(%0.4f/%d)$\n" % (self.chi_ndof, self.chi2, self.ndof)
                 self.func_x = np.linspace(self.x[0], self.x[-1], 10000)  # 10000 linearly spaced numbers
                 self.y_fit = self.model(self.func_x, *self.par_values)
+                # Plot
                 plt.rc("font", size=16, family="Helvetica")
                 fig = plt.figure(figsize=(10, 6))
                 ax = fig.add_axes([0, 0, 1, 1])
