@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import time
 from util import chi2Reg_func, effVarChi2Reg_func
+from bgu_physics_lab_b.regression import Chi2Reg, EffVarChi2Reg
 
 st.set_page_config(page_title='Physics Lab app!')
 #st.set_page_config(icon = --) Need to pass an image object (using PIL).
@@ -31,7 +32,7 @@ st.write("""
 """)
 
 # Get the name of the excel file of the user:
-file_name = st.text_input('please insert the name of your excel file: ')
+file_name = st.text_input('please insert the name of your excel file: ') + '.xlsx'
 # Note: Concatenate an '.xlsx' to the end of the file name inserted by the user, so he will have to insert only the name of the file itself.
 
 
@@ -45,6 +46,10 @@ dx_colName = st.text_input('dx data column name:')
 
 # Note1: Can (should) ask here for some initial values and limits for the parameters.
 # Note2: Can display the data here, or ask the user if he wishes to see the data to make sure it's good.
+
+title = st.text_input('title:')
+x_axis_name = st.text_input('x axis title:')
+y_axis_name = st.text_input('y axis title:')
 
 # Ask the user to choose a model from the printed options:
 model_str = st.radio('please choose a model from the following:', ('None', 'Linear', 'Power', 'Exponential', 'Cosine', 'Poly_2', 'Poly_3', 'normalised Gaussian', 'Gaussian', 'Poisson', 'Constant'))
@@ -80,9 +85,9 @@ if not model_str == 'None':
 
     # Check weather the user inserted a dx column name, and use appropriate function.
     if dx_colName == '':
-        chi2Reg_func(model, file_name, sheet_name, x_colName, y_colName, dy_colName)
+        chi2Reg_func(model, file_name, sheet_name, x_colName, y_colName, dy_colName, title, x_axis_name, y_axis_name)
     else:
-        effVarChi2Reg_func(model, file_name, sheet_name, x_colName, y_colName, dy_colName, dx_colName)
+        effVarChi2Reg_func(model, file_name, sheet_name, x_colName, y_colName, dy_colName, title, dx_colName, x_axis_name, y_axis_name)
 
 
 
