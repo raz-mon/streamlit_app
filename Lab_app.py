@@ -4,30 +4,14 @@ import numpy as np
 import pandas as pd
 import time
 from util import chi2Reg_func, effVarChi2Reg_func
-from bgu_physics_lab_b.regression import Chi2Reg, EffVarChi2Reg
+from regression_with_app_changes import Chi2Reg, EffVarChi2Reg
 
 st.set_page_config(page_title='Physics Lab app!')
 #st.set_page_config(icon = --) Need to pass an image object (using PIL).
-"""
-This will be the flow of things (in general):\n
-1. Get the path of the excel file from the user.\n
-2. Get the names of the sheet and columns of the excel file.\n
-3. User inserts his desires: Model, parameter limits, graph title, x_label, y_label.\n
-4. Do the calculations 'behind the screen':\n
-    - Generate the minimization function (func to minimize) using Chi2Regression (of probfit) or effVarChi2Reg (of BGU_physics_Lab).\n
-    - Minimize using Minuit (Make a Minuit Object, and minimize using ob.migrad() method).\n
-    - Plot the data and the minimized function, print the parameter-values, the chi^2 val.\n
-5. Make it possible to save the figure in current work-environment (of the user).\n
-6. Make an option of exporting the code generated 'behind the screen'.\n
-
-Seems like a good start to me.
-"""
-
-
 # Can also write: st.title('Pyhsics Lab application!')
 
 st.write("""
-# Pyhsics Lab application!
+# Hello!
 ## Here we will try to make your life **easier** with a nice application, that will do the ***hard work*** for you.
 """)
 
@@ -85,9 +69,11 @@ if not model_str == 'None':
 
     # Check weather the user inserted a dx column name, and use appropriate function.
     if dx_colName == '':
+        st.write('## Chi2Regression algorithm in action...')
         chi2Reg_func(model, file_name, sheet_name, x_colName, y_colName, dy_colName, title, x_axis_name, y_axis_name)
     else:
-        effVarChi2Reg_func(model, file_name, sheet_name, x_colName, y_colName, dy_colName, title, dx_colName, x_axis_name, y_axis_name)
+        st.write('## EffVarChi2Reg algorithm in action...')
+        effVarChi2Reg_func(model, file_name, sheet_name, x_colName, y_colName, dy_colName, dx_colName, title, x_axis_name, y_axis_name)
 
 
 

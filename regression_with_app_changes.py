@@ -3,15 +3,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 from iminuit import Minuit, describe
 from iminuit.util import make_func_code
+from PIL import Image
+import streamlit as st
 
 
 class Chi2Reg:  # This class is like Chi2Regression but takes into account dx
     # this part defines the variables the class will use
-    def __init__(self, model, x, y, dx, dy):
+    def __init__(self, model, x, y, dy):
         self.model = model  # model predicts y value for given x value
         self.x = np.array(x)  # the x values
         self.y = np.array(y)  # the y values
-        self.dx = np.array(dx)  # the x-axis uncertainties
         self.dy = np.array(dy)  # the y-axis uncertainties
         self.func_code = make_func_code(describe(self.model)[1:])
 
@@ -23,8 +24,9 @@ class Chi2Reg:  # This class is like Chi2Regression but takes into account dx
         return chi2
 
     # this part defines a function called "show" which will make a nice plot when invoked
-    def show(self, optimizer, x_title="X", y_title="Y", goodness_loc=2):
+    def show(self, optimizer, title='title', x_title="X", y_title="Y", goodness_loc=2):
         self.par = optimizer.parameters
+        self.title = title
         self.fit_arg = optimizer.fitarg
         self.chi2 = optimizer.fval
         self.ndof = len(self.x) - len(self.par)
@@ -45,12 +47,16 @@ class Chi2Reg:  # This class is like Chi2Regression but takes into account dx
         ax.plot(self.func_x, self.y_fit)  # plot the function over 10k points covering the x axis
         ax.scatter(self.x, self.y, c="red")
         # ax.errorbar(self.x, self.y, self.dy, self.dy,fmt='none',ecolor='red', capsize=3) typo here I think! dy twice instead of dy, dx
-        ax.errorbar(self.x, self.y, self.dy, self.dx, fmt='none', ecolor='red', capsize=3)
+        ax.errorbar(self.x, self.y, self.dy, fmt='none', ecolor='red', capsize=3)
         ax.set_xlabel(x_title, fontdict={"size": 21})
         ax.set_ylabel(y_title, fontdict={"size": 21})
         anchored_text = AnchoredText(text, loc=goodness_loc)
         ax.add_artist(anchored_text)
         plt.grid(True)
+        plt.title(title)
+        plt.savefig(title, dpi=300, bbox_inches='tight')
+        im = Image.open(title + '.png')
+        st.image(im)
 
 
 
@@ -74,8 +80,9 @@ class EffVarChi2Reg:  # This class is like Chi2Regression but takes into account
         return chi2
 
     # this part defines a function called "show" which will make a nice plot when invoked
-    def show(self, optimizer, x_title="X", y_title="Y", goodness_loc=2):
+    def show(self, optimizer, title="title", x_title="X", y_title="Y", goodness_loc=2):
         self.par = optimizer.parameters
+        self.title = title
         self.fit_arg = optimizer.fitarg
         self.chi2 = optimizer.fval
         self.ndof = len(self.x) - len(self.par)
@@ -102,7 +109,10 @@ class EffVarChi2Reg:  # This class is like Chi2Regression but takes into account
         anchored_text = AnchoredText(text, loc=goodness_loc)
         ax.add_artist(anchored_text)
         plt.grid(True)
-
+        plt.title(self.title)
+        plt.savefig(title, dpi=300, bbox_inches='tight')
+        im = Image.open(title + '.png')
+        st.image(im)
 
 """
 if __name__ == "__main__":
