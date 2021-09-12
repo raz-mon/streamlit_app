@@ -103,6 +103,8 @@ class EffVarChi2Reg:  # This class is like Chi2Regression but takes into account
         ax.add_artist(anchored_text)
         plt.grid(True)
 
+
+"""
 if __name__ == "__main__":
     np.random.seed(42)
     X = np.linspace(1,6,5)
@@ -116,3 +118,4 @@ if __name__ == "__main__":
     opt.migrad()
     reg.show(opt)
     plt.show()
+"""
