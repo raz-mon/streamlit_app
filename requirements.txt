@@ -1,0 +1,7 @@
+pandas
+numpy
+PIL
+matplotlib.pyplot
+iminuit
+iminuit.util
+matplotlib.offsetbox
