@@ -7,7 +7,7 @@ st.set_page_config(page_title='Physics Lab app!')
 # Can also write: st.title('Pyhsics Lab application!')
 
 st.write("""
-# Hey there! Nice to meet you!!!!!!@#$
+# Welcome to the Physics Lab App!
 ## Here we will try to make your life **easier** with a nice application, that will do the ***hard work*** for you.
 """)
 
