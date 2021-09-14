@@ -1,10 +1,6 @@
 import streamlit as st
-from PIL import Image
 import numpy as np
-import pandas as pd
-import time
 from util import chi2Reg_func, effVarChi2Reg_func
-from regression_with_app_changes import Chi2Reg, EffVarChi2Reg
 
 st.set_page_config(page_title='Physics Lab app!')
 #st.set_page_config(icon = --) Need to pass an image object (using PIL).
