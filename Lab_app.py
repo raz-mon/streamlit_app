@@ -8,7 +8,6 @@ st.set_page_config(page_title='Physics Lab app!')
 
 st.write("""
 # Welcome to the Physics Lab App!
-# Fuck you Eden!!!!!!!
 ## Here we will try to make your life **easier** with a nice application, that will do the ***hard work*** for you.
 """)
 
