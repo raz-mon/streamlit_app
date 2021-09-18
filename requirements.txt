@@ -4,3 +4,4 @@ numpy
 matplotlib
 iminuit
 probfit
+openpyxl

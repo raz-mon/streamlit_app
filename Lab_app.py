@@ -12,7 +12,7 @@ st.write("""
 """)
 
 # Get the name of the excel file of the user:
-file_name = st.text_input('please insert the name of your excel file: ') + '.xlsx'
+file_name = st.text_input('please insert the name of your excel file: ')# + '.xlsx'
 # Note: Concatenate an '.xlsx' to the end of the file name inserted by the user, so he will have to insert only the name of the file itself.
 
 
