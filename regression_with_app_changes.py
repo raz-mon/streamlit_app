@@ -57,6 +57,8 @@ class Chi2Reg:  # This class is like Chi2Regression but takes into account dx
         plt.savefig(title, dpi=300, bbox_inches='tight')
         im = Image.open(title + '.png')
         st.image(im)
+        st.download_button(label='Download figure', data=title+'.png', file_name=title+'.png')
+#        st.write('If the download button doesnt work, you can right-click the figure, and click "save image as" as well.')
 
 
 
@@ -113,6 +115,7 @@ class EffVarChi2Reg:  # This class is like Chi2Regression but takes into account
         plt.savefig(title, dpi=300, bbox_inches='tight')
         im = Image.open(title + '.png')
         st.image(im)
+        st.download_button(label='Download figure', data=title + '.png', file_name=title + '.png')
 
 """
 if __name__ == "__main__":
