@@ -11,7 +11,7 @@ def chi2Reg_func(model, file_name, sheet_name, x_colName, y_colName, dy_colName,
     df = pd.read_excel(file_name, sheet_name=sheet_name)
     x_data = df[x_colName].values   #[x_start:x_stop]
     y_data = df[y_colName].values   #[y_start:y_stop]
-    if dy_colName is None:
+    if dy_colName is None or dy_colName == '':
         dy = np.zeros_like(x_data)
     else:
         dy = df[dy_colName].values      #[y_start:y_stop]
