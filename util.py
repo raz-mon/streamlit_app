@@ -13,7 +13,7 @@ def chi2Reg_func(model, file_name, sheet_name, x_colName, y_colName, dy_colName,
     y_data = df[y_colName].values   #[y_start:y_stop]
     if dy_colName is None or dy_colName == '':
         # dy = np.zeros_like(x_data)
-        st.write('you have given no errors for the y axis data. Do not worry, we added a $\frac{y_i}{10}$ error column for you in the plot')
+        st.write('you have given no errors for the y axis data. Do not worry, we added a $\\frac{y_i}{10}$ error column for you in the plot')
         dy = [y/10 for y in y_data]
     else:
         dy = df[dy_colName].values      #[y_start:y_stop]
