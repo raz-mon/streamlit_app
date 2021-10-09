@@ -8,7 +8,7 @@ from iminuit import Minuit
 from PIL import Image
 
 def chi2Reg_func(model, file_name, sheet_name, x_colName, y_colName, dy_colName, title, x_axis_name, y_axis_name):
-    df = pd.read_excel(file_name, sheet_name=sheet_name)
+    df = pd.read_csv(file_name, sheet_name=sheet_name)
     x_data = df[x_colName].values   #[x_start:x_stop]
     y_data = df[y_colName].values   #[y_start:y_stop]
     dy = df[dy_colName].values      #[y_start:y_stop]
